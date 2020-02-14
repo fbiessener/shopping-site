@@ -48,7 +48,13 @@ def show_melon(melon_id):
     Show all info about a melon. Also, provide a button to buy that melon.
     """
 
-    melon = melons.get_by_id("meli")
+    # This has been hard coded to only return the details for "meli" instead of
+    # whichever melon is associated with the melon_id
+    # changed "meli" parameter to melon_id
+    # the URL was changing but the contents were not
+    
+    melon = melons.get_by_id(melon_id)
+    print(type(melon))
     print(melon)
     return render_template("melon_details.html",
                            display_melon=melon)
