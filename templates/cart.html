@@ -13,35 +13,31 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>Ancient Watermelon</td>
-            <td>5</td>
-            <td>$3.00</td>
-            <td>$15.00</td>
-        </tr>
-        <tr>
-            <td>Charleston Gray</td>
-            <td>2</td>
-            <td>$2.00</td>
-            <td>$4.00</td>
-        </tr>
-        <tr>
-            <td>Crenshaw</td>
-            <td>1</td>
-            <td>$2.00</td>
-            <td>$2.00</td>
-        </tr>
-        <tr>
-            <td>Ledmon Watermelon</td>
-            <td>2</td>
-            <td>$3.00</td>
-            <td>$6.00</td>
-        </tr>
+            {# {% for melon in ??? %}
+            <th>{{ common_name }}</th> <!-- method/attribute call? -->
+            <th>{{ quantity }}</th> <!-- based on an increment -->
+            <th>{{ price }}</th> <!-- method/attribute call? -->
+            <th>{{ total }}</th> <!--  based on quantity and price -->
+            {% endfor %} #}
         </tbody>
     </table>
 
-    <h3>Total: $27.00</h3>
-
+{#     total price for all melons <h3>Total: $27.00</h3>
+ #}
     <a href="/checkout" class="btn btn-large btn-primary">Check Out</a>
 
 {% endblock %}
+
+<!--This logic all goes in route/cart???
+    check to see if session already contains a cart
+    if not, add a new cart (empty dict) to session
+    cart is a key-value pair: session["cart"] = {}
+
+    once cart exists, add item to the dict; increment by 1
+    generate flash msg('Melon successfully added!')
+        session will fail to update without this
+    print cart to terminal (temp print testing)
+    ***redirect user to /cart
+    cart dictionary: {melon_id: count} keyed to string "cart" in session
+
+    Total needs to return a variable -->

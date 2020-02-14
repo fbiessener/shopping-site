@@ -6,7 +6,7 @@ put melons in a shopping cart.
 Authors: Joel Burton, Christian Fernandez, Meggie Mahnken, Katie Byers.
 """
 
-from flask import Flask, render_template, redirect, flash
+from flask import Flask, render_template, redirect, flash, session, request
 import jinja2
 
 import melons
@@ -52,7 +52,7 @@ def show_melon(melon_id):
     # whichever melon is associated with the melon_id
     # changed "meli" parameter to melon_id
     # the URL was changing but the contents were not
-    
+
     melon = melons.get_by_id(melon_id)
     print(type(melon))
     print(melon)
@@ -82,6 +82,23 @@ def show_shopping_cart():
     # Make sure your function can also handle the case wherein no cart has
     # been added to the session
 
+    # get cart {}
+    melon_list = []
+    total_order = 0.00
+    
+    # generate an empty dict if no session, otherwise add session to cart
+    # dictionary
+    cart = session.get("cart", {})
+    
+    # for melon in cart:
+    #   melon_list.append(melon)
+    #   total_melon_price = melon.quantity * melon.price
+    #   total_order += total_melon_price
+    # if "cart" in session:
+    #   session["cart"] add melon to cart
+    # else:
+    #   session['cart'] = {}
+
     return render_template("cart.html")
 
 
@@ -104,7 +121,15 @@ def add_to_cart(melon_id):
     # - flash a success message
     # - redirect the user to the cart page
 
-    return "Oops! This needs to be implemented!"
+    # melon = melons.get_by_id(melon_id)
+    # add_melon = session[melon]
+
+    # session[melon] = request.args.get('melon_id')
+    # if melon in session:
+
+
+    flash("Melon(s) successfully added!")
+    return redirect("/melons")
 
 
 @app.route("/login", methods=["GET"])
@@ -135,6 +160,18 @@ def process_login():
     #   message and redirect the user to the "/melons" route
     # - if they don't, flash a failure message and redirect back to "/login"
     # - do the same if a Customer with that email doesn't exist
+
+    # username = request.form['username']
+    # password = request.form['password']
+
+    # if password == 'string':
+    #     session['current_user'] = username
+    #     flash(f'Logged in as {username}')
+    #     return redirect('/melons')
+
+    # else:
+    #     flash('Wrong password!')
+    #     return redirect('/login')
 
     return "Oops! This needs to be implemented"
 
